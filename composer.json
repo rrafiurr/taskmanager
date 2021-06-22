@@ -1,0 +1,20 @@
+{
+    "name": "rafiur/task-manager",
+    "type": "library",
+    "require": {
+        "php": "^7.4"
+    },
+    "license": "mit",
+    "authors": [
+        {
+            "name": "Rafiur Rabby",
+            "email": "rrafiurr@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Rafiur\\": "packages/Rafiur/TaskManager/src"
+        }
+    },
+    "minimum-stability": "dev"
+}
