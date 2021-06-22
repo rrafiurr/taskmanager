@@ -16,5 +16,10 @@
             "Rafiur\\": "packages/Rafiur/TaskManager/src"
         }
     },
+    "extra": {
+        "laravel" : {
+            "providers" : ["Rafiur\\TaskManagerServiceProvider"]
+        }
+    },
     "minimum-stability": "dev"
 }
