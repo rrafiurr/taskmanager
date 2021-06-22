@@ -21,7 +21,7 @@ class TaskController extends Controller
         $tasks=Task::get();
         return $tasks;
     }
-    public function new_tas_with_assing(Request $request)
+    public function new_task_with_assing(Request $request)
     {
         $rules = array(
             'title'=> 'required',
@@ -52,6 +52,32 @@ class TaskController extends Controller
         
 
         //user_id json
+    }
+    public function update_task(Request $request)
+    {
+        $rules = array(
+            'id'=> 'required',
+            'title'=> 'required',
+            'description'=> 'nullable',
+            'project_type'=> 'required'
+        );
+        $response = $this->validationWithJson($request->all(),$rules);
+        
+
+        if($response === true)
+        {
+            $task_save=Task::find($request->id);
+            $task_save->title=$request->title;
+            $task_save->description=$request->description;
+            $task_save->task_status=0;
+            $task_save->type_id=1;
+
+            $task_save->save();
+
+            return $this->responseWithSuccess('Task Updated Successfully',$task_save);
+        }else{
+            return $this->responseWithError('Found Something wrong',$response); 
+        }
     }
 
     protected function validationWithJson( $data=[],$rules=[],$message=[] )
